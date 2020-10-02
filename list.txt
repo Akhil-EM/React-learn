@@ -1,0 +1,77 @@
+import React from 'react'
+
+import {View,Text,StyleSheet,TouchableOpacity} from 'react-native'
+
+class App extends React.Component{
+      state={
+          names:[
+              {id:0,
+                name:'akhil'},
+              {id:1,
+                 name:'amal'},
+              {id:2,
+                  name:'vyshakh'},
+              {id:3,
+                 name:'dhillu'},
+                 {id:4,
+                    name:'ajil'},
+                    {id:0,
+                        name:'akhil'},
+                      {id:1,
+                         name:'amal'},
+                      {id:2,
+                          name:'vyshakh'},
+                      {id:3,
+                         name:'dhillu'},
+                         {id:4,
+                            name:'ajil'},
+                
+          ]
+      }
+      alertName(name){
+          alert(name);
+      }
+    render(){
+        
+        return(
+            <View style={styles.container}>
+               {
+                   this.state.names.map((item,index) => (
+                       <TouchableOpacity
+                       style={styles.item}
+                       key={item.id}
+                       onPress={ () => this.alertName(item.name)}>
+                         <Text>{item.name}</Text>
+                       </TouchableOpacity>
+                   ))
+               }
+            </View>
+        )
+    }
+}
+
+
+export default App
+
+
+const styles = StyleSheet.create ({
+    container: {
+       flexDirection: 'column',
+       justifyContent: 'flex-start',
+       alignItems: 'center',
+       backgroundColor: 'white',
+       height:'100%',
+       
+    },
+    item:{
+        margin:5,
+        backgroundColor:'#fff',
+        width:250,
+        height:50,
+        alignItems:'center',
+        justifyContent:'center',
+        elevation:5,
+        borderRadius:3
+
+    }
+ })
