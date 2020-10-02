@@ -1,0 +1,85 @@
+//https://blog.bitsrc.io/making-animations-in-react-native-the-simplified-guide-6580f961f6e8
+
+import React from 'react'
+import { Text,
+    View,
+    StyleSheet,
+    Animated,
+    TouchableOpacity} from 'react-native'
+
+class Animations extends React.Component {
+    state = {
+        fadeValue: new Animated.Value(0)
+      }
+      _start = () => {
+        Animated.timing(this.state.fadeValue, {
+          toValue: 1,
+          duration: 1000,
+          useNativeDriver: true // Add This line
+        }).start();
+      };
+   render() {
+    
+    
+      
+      const animatedStyle = { width: this.animatedWidth, height: this.animatedHeight }
+      return (
+        <View style={styles.container}>
+        <TouchableOpacity style={styles.btn} onPress={() => this._start()}>
+          <Text style={styles.textBtn}>Start</Text>
+        </TouchableOpacity>
+        <Animated.View
+          style={{
+            opacity: this.state.fadeValue,
+            height: 250,
+            width: 200,
+            margin: 5,
+            borderRadius: 12,
+            backgroundColor: "#347a2a",
+            justifyContent: "center"
+          }}
+          >
+          <Text style={styles.text}>Fade </Text>
+        </Animated.View>
+      </View>
+         
+      )
+   }
+}
+export default Animations
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: "#FFF",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    item: {},
+    btn: {
+      backgroundColor: "#480032",
+      width: 100,
+      height: 40,
+      padding: 3,
+      justifyContent: "center",
+      borderRadius: 6
+    },
+    text: {
+      fontSize: 20,
+      color: "#fff",
+      fontWeight: "bold",
+      textAlign: "center"
+    },
+    item1: {
+      backgroundColor: "red",
+      padding: 20,
+      width: 100,
+      margin: 10
+    },
+  
+    textBtn: {
+      color: "#f4f4f4",
+      fontWeight: "bold",
+      textAlign: "center"
+    }
+  });
